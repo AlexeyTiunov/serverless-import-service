@@ -8,7 +8,7 @@ export default {
       s3: {
         bucket: "import-service-mp-us",
         event: "s3:ObjectCreated:*",
-        rules: [{ prefix: "uploaded" }, { suffix: ".csv" }],
+        rules: [{ prefix: "uploaded/" }],
         existing: true,
       },
     },
