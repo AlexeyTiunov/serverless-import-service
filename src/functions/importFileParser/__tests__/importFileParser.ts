@@ -19,9 +19,9 @@ describe("[Function]importFileParser", () => {
     const event: S3Event = { Records: [eventRecord] } as S3Event;
     s3Mock.on(GetObjectCommand).resolves({ Body: Readable.from(generate()) });
     // @ts-ignore
-    importFileParser(event);
-    setTimeout(() => {
+    importFileParser(event).then(() => {
+      console.log("done");
       done();
-    }, 500);
+    });
   });
 });

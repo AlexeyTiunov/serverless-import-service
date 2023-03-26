@@ -2,18 +2,18 @@ import { CopyObjectCommandInput, DeleteObjectCommandInput } from "@aws-sdk/clien
 
 export async function copyObject(client, bucket: string, copySourse: string, destination: string, deleteCopySource: Boolean = true): Promise<void> {
   // const client: S3 = new S3({ region: "us-east-1" });
-  console.log(bucket);
-  console.log(copySourse);
-  console.log(destination);
+  // console.log(bucket);
+  // console.log(copySourse);
+  // console.log(destination);
 
   try {
     const copyParams: CopyObjectCommandInput = { Bucket: bucket, CopySource: bucket + "/" + copySourse, Key: destination };
-    const result = await client.copyObject(copyParams);
-    console.log(result);
+    await client.copyObject(copyParams);
+    // console.log(result);
     if (deleteCopySource) {
       const deleteParams: DeleteObjectCommandInput = { Bucket: bucket, Key: copySourse };
-      const result = await client.deleteObject(deleteParams);
-      console.log(result);
+      await client.deleteObject(deleteParams);
+      // console.log(result);
     }
   } catch (e) {
     console.log(e);

@@ -1,26 +1,13 @@
+Task 6 what was done:
+  ### Task 6.2 done
+- Update the importFileParser lambda function in the Import Service to send each CSV record into SQS.
 
-Task 5 what was done:
 
-### Task 5.1 - done
-- Create a new service called import-service at the same level as Product Service with a its own serverless.yml file
-### Task 5.2  - done 
-- Create a lambda function called importProductsFile under the same Serverless config file (i.e. serverless.yaml) of the Import Service which will be triggered by the HTTP GET method.
-- The requested URL should be /import.
-- Implement its logic so it will be expecting a request with a name of CSV file with products and creating a new Signed URL with the following key: uploaded/${fileName}.
-- The name will be passed in a query string as a name parameter and should be described in the serverless.yml file as a request parameter.
-- Update serverless.yml with policies to allow lambda functions to interact with S3.
-- The response from the lambda should be the created Signed URL.
-- The lambda endpoint should be integrated with the frontend by updating import property of the API paths configuration.
-### Task 5.3 - done
-- Create a lambda function called importFileParser under the same serverless.yml file which will be triggered by an S3 event.
-- The event should be s3:ObjectCreated:*
-- Configure the event to be fired only by changes in the uploaded folder in S3.
-- The lambda function should use a readable stream to get an object from S3, parse it using csv-parser package and log each record to be shown in CloudWatch.
-    
-## Additional (optional) tasks
-- +10 (for JS only) - async/await is used in lambda functions
-- +10 (All languages) - importProductsFile lambda is covered by unit tests. (for JS only) aws-sdk-mock can be used to mock S3 methods
-- +10 (All languages) - At the end of the stream the lambda function should move the file from the uploaded folder into the parsed folder (move the file means that file should be copied into a new folder in the same bucket called parsed, and then deleted from uploaded folder)
+
+
+
+
+
 
 
 
