@@ -9,7 +9,7 @@ const serverlessConfiguration: AWS = {
   plugins: ["serverless-esbuild"],
   provider: {
     name: "aws",
-    runtime: "nodejs14.x",
+    runtime: "nodejs16.x",
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -31,7 +31,7 @@ const serverlessConfiguration: AWS = {
       minify: false,
       sourcemap: true,
       exclude: ["aws-sdk"],
-      target: "node14",
+      target: "node16",
       define: { "require.resolve": undefined },
       platform: "node",
       concurrency: 10,
@@ -43,7 +43,7 @@ const serverlessConfiguration: AWS = {
         Type: "AWS::IAM::Role",
         Properties: {
           RoleName: "importLambdaFnRole",
-          ManagedPolicyArns: ["arn:aws:iam::aws:policy/AmazonS3FullAccess"],
+          ManagedPolicyArns: ["arn:aws:iam::aws:policy/AmazonSQSFullAccess", "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"],
           AssumeRolePolicyDocument: {
             Version: "2012-10-17",
             Statement: [
